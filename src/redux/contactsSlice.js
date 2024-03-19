@@ -42,10 +42,11 @@ const slice = createSlice({
       .addCase(deleteContact.fulfilled, (state, action) => {
         state.loading = false;
         state.error = null;
-        state.items = state.items
-          .filter((item) => item.id !== action.payload.id)
-          .addCase(deleteContact.rejected, handleRejected);
-      });
+        state.items = state.items.filter(
+          (item) => item.id !== action.payload.id
+        );
+      })
+      .addCase(deleteContact.rejected, handleRejected);
   },
 });
 
